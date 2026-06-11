@@ -35,7 +35,7 @@ v_ = v;  %v_ is the voltage at previous time steps
 tlast = zeros(N,1); %variable sed to implement refractory period 
 kd = 0; %used to initialize storage every nq time steps, kd = kd + 1 if mod(i,nq)==1; 
 nq = 20; %store every nq time steps 
-%REC2 = zeros(nt/nq,N); %store calcium traces in REC2
+REC2 = zeros(nt/nq,N); %store calcium traces in REC2
 REC = zeros(nt,20); %store voltage traces in REC 
 BIAS = vpeak-1; %background current
 sig = 0.5; %white noise standard deviation  
@@ -96,20 +96,20 @@ v = v + (vreset - v).*(v>=vpeak); %reset spike time
 
 
 
-%if mod(i,nq)==1
-%kd = kd + 1;
-%REC2(kd,:) = ro; 
-%end
+if mod(i,nq)==1
+kd = kd + 1;
+REC2(kd,:) = ro; 
+end
 
 
 
 %% plotting results 
     if mod(i,round(10/dt))==1
-        prog = dt*i/T;
+        prog = dt*i/T
     end
     
 end
 %% 
-% save tracking_model_1.mat -v7.3 
+ save tracking_model_1.mat -v7.3 
 
-toc
+

@@ -2,14 +2,14 @@
 clear all
 clc 
 %close all
-rng(1) %fix RNG just for refersion interneurons down the road (see documentation), user can change this otherwise.  
+rng(1) %fix RNG just 
 
 %% Neuronal Parameters
-NE = 20;  %number of excitatory neurons 
-NI = 20; %number of inhibitory neurons
+NE = 200;  %number of excitatory neurons 
+NI = 200; %number of inhibitory neurons
 mu = NE/(NE+NI); %ratio of E to total 
 N = NE + NI; %total number of neurons 
-T = 5; %total simulation time (s)   
+T = 900; %total simulation time (s)   
 dt = 0.00005; %time step (s) 
 nt = round(T/dt); 
 tref = 0.002; %Refractory time constant in seconds 
@@ -136,6 +136,4 @@ end
     
 end
 %% 
-%save disinhibition_model_1.mat -v7.3
-figure(1)
-plot(store)
+save disinhibition_model_1.mat -v7.3
